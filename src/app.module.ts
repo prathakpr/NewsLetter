@@ -33,6 +33,7 @@ import { RssCampaign } from './rss-campaign/entities/rss-campaign.entity';
       entities: [Campaign, ClickStat, List, Organization, Subscriber, User, RssCampaign],
       synchronize: true,  // For dev environment only, not recommended in production
     }),
+    TypeOrmModule.forFeature([RssCampaign]), // Ensure this is included
     OrganizationsModule,
     UserModule,
     SubscribersModule,

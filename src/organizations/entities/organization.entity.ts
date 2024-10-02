@@ -3,7 +3,7 @@ import { List } from 'src/lists/entities/list.entity';
 import { Subscriber } from 'src/subscribers/entities/subscriber.entity';
 import { User } from 'src/users/entities/user.entity';
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-
+import { RssCampaign } from '../../rss-campaign/entities/rss-campaign.entity';
 
 @Entity('organizations')
 export class Organization {
@@ -30,4 +30,8 @@ export class Organization {
 
     @UpdateDateColumn()
     updatedAt: Date;
+
+        // Define a one-to-many relationship
+        @OneToMany(() => RssCampaign, (rssCampaign) => rssCampaign.organization)
+        rssCampaigns: RssCampaign[];
 }

@@ -1,6 +1,7 @@
 import { Campaign } from 'src/campaigns/entities/campaign.entity';
 import { Organization } from 'src/organizations/entities/organization.entity';
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, CreateDateColumn } from 'typeorm';
+import { RssCampaign } from '../../rss-campaign/entities/rss-campaign.entity';
 
 @Entity('lists')
 export class List {
@@ -21,4 +22,8 @@ export class List {
 
     @CreateDateColumn()
     createdAt: Date;
+
+        // Define a one-to-many relationship
+        @OneToMany(() => RssCampaign, (rssCampaign) => rssCampaign.list)
+        rssCampaigns: RssCampaign[];
 }
