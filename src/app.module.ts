@@ -18,6 +18,8 @@ import { User } from './users/entities/user.entity';
 import { EmailModule } from './email/email.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import { TasksModule } from './tasks/task.module';
+import { RssCampaignModule } from './rss-campaign/rss-campaign.module';
+import { RssCampaign } from './rss-campaign/entities/rss-campaign.entity';
 @Global()
 @Module({
   imports: [
@@ -26,10 +28,10 @@ import { TasksModule } from './tasks/task.module';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'Anubhav@6263626091',
+      password: 'Pulkit@6263626091',
       database: 'NewsLetter',
-      entities: [Campaign, ClickStat, List, Organization, Subscriber, User],
-      synchronize: true,
+      entities: [Campaign, ClickStat, List, Organization, Subscriber, User, RssCampaign],
+      synchronize: true,  // For dev environment only, not recommended in production
     }),
     OrganizationsModule,
     UserModule,
@@ -40,7 +42,7 @@ import { TasksModule } from './tasks/task.module';
     ClickStatsModule,
     AuthModule,
     EmailModule,
-    ScheduleModule.forRoot(), TasksModule,
+    ScheduleModule.forRoot(), TasksModule, RssCampaignModule,
   ],
   controllers: [AppController],
   providers: [AppService],
